@@ -1,0 +1,121 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Tbd event #<%= @tbd_event.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/tbd_events" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/tbd_events/<%= @tbd_event.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit tbd event
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_tbd_event/<%= @tbd_event.id %>" class="btn btn-block btn-outline-secondary">
+          Delete tbd event
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Event name
+      </dt>
+      <dd>
+        <%= @tbd_event.event_name %>
+      </dd>
+
+      <dt>
+        Event desc
+      </dt>
+      <dd>
+        <%= @tbd_event.event_desc %>
+      </dd>
+
+      <dt>
+        Window begin
+      </dt>
+      <dd>
+        <%= @tbd_event.window_begin %>
+      </dd>
+
+      <dt>
+        Window end
+      </dt>
+      <dd>
+        <%= @tbd_event.window_end %>
+      </dd>
+
+      <dt>
+        Min length
+      </dt>
+      <dd>
+        <%= @tbd_event.min_length %>
+      </dd>
+
+      <dt>
+        Start time
+      </dt>
+      <dd>
+        <%= @tbd_event.start_time %>
+      </dd>
+
+      <dt>
+        End time
+      </dt>
+      <dd>
+        <%= @tbd_event.end_time %>
+      </dd>
+
+      <dt>
+        Start date
+      </dt>
+      <dd>
+        <%= @tbd_event.start_date %>
+      </dd>
+
+      <dt>
+        End date
+      </dt>
+      <dd>
+        <%= @tbd_event.end_date %>
+      </dd>
+
+      <dt>
+        Location
+      </dt>
+      <dd>
+        <%= @tbd_event.location %>
+      </dd>
+
+      <dt>
+        Creator
+      </dt>
+      <dd>
+        <%= @tbd_event.creator_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@tbd_event.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@tbd_event.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+

@@ -1,0 +1,51 @@
+<%= render("/layouts/navbar.html.erb") %>
+
+<body>
+        
+    <p> </p>
+    <% if user_signed_in? %>
+          <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+    <% else %>
+          <%= link_to('Login', new_user_session_path) %>  
+    <% end %>
+
+    <p>
+        Note: if nothing is showing you may need to sign in with Google.
+    </p>
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    <script>
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      }
+    </script>
+    <p> </p>
+    <h1>
+        Dashboard
+    </h1>
+
+    <div>
+        
+    </div>
+    <div>
+        <h2> My Plans </h2>
+        <table>
+            <th>Name</th>
+            <th>Description</th>
+            <th></th>
+        </table>
+    </div>
+    
+    <%= render("/layouts/event_table.html.erb") %>
+    
+</body>

@@ -1,0 +1,72 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Invite #<%= @invite.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/invites" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/invites/<%= @invite.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit invite
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_invite/<%= @invite.id %>" class="btn btn-block btn-outline-secondary">
+          Delete invite
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Email
+      </dt>
+      <dd>
+        <%= @invite.email %>
+      </dd>
+
+      <dt>
+        Event
+      </dt>
+      <dd>
+        <%= @invite.event_id %>
+      </dd>
+
+      <dt>
+        Invitor
+      </dt>
+      <dd>
+        <%= @invite.invitor_id %>
+      </dd>
+
+      <dt>
+        Invite status
+      </dt>
+      <dd>
+        <%= @invite.invite_status %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@invite.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@invite.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+

@@ -1,0 +1,114 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      All schedules
+    </h1>
+
+    <a href="/schedules/new" class="btn btn-block btn-outline-secondary">
+      Add a new schedule
+    </a>
+  </div>
+</div>
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Owner
+        </th>
+
+        <th>
+          Event name
+        </th>
+
+        <th>
+          Event cal
+        </th>
+
+        <th>
+          Start time
+        </th>
+
+        <th>
+          End time
+        </th>
+
+        <th>
+          Start date
+        </th>
+
+        <th>
+          End date
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @schedules.each do |schedule| %>
+      <tr>
+        <td>
+          <%= schedule.id %>
+        </td>
+
+        <td>
+          <%= schedule.owner_id %>
+        </td>
+
+        <td>
+          <%= schedule.event_name %>
+        </td>
+
+        <td>
+          <%= schedule.event_cal %>
+        </td>
+
+        <td>
+          <%= schedule.start_time %>
+        </td>
+
+        <td>
+          <%= schedule.end_time %>
+        </td>
+
+        <td>
+          <%= schedule.start_date %>
+        </td>
+
+        <td>
+          <%= schedule.end_date %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(schedule.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(schedule.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/schedules/<%= schedule.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

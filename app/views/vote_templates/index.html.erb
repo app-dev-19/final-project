@@ -1,0 +1,82 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      All votes
+    </h1>
+
+    <a href="/votes/new" class="btn btn-block btn-outline-secondary">
+      Add a new vote
+    </a>
+  </div>
+</div>
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Proposed time
+        </th>
+
+        <th>
+          Voter
+        </th>
+
+        <th>
+          Event
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @votes.each do |vote| %>
+      <tr>
+        <td>
+          <%= vote.id %>
+        </td>
+
+        <td>
+          <%= vote.proposed_time_id %>
+        </td>
+
+        <td>
+          <%= vote.voter_id %>
+        </td>
+
+        <td>
+          <%= vote.event_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(vote.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(vote.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/votes/<%= vote.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

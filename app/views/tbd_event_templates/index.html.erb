@@ -1,0 +1,146 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      All tbd events
+    </h1>
+
+    <a href="/tbd_events/new" class="btn btn-block btn-outline-secondary">
+      Add a new tbd event
+    </a>
+  </div>
+</div>
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Event name
+        </th>
+
+        <th>
+          Event desc
+        </th>
+
+        <th>
+          Window begin
+        </th>
+
+        <th>
+          Window end
+        </th>
+
+        <th>
+          Min length
+        </th>
+
+        <th>
+          Start time
+        </th>
+
+        <th>
+          End time
+        </th>
+
+        <th>
+          Start date
+        </th>
+
+        <th>
+          End date
+        </th>
+
+        <th>
+          Location
+        </th>
+
+        <th>
+          Creator
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @tbd_events.each do |tbd_event| %>
+      <tr>
+        <td>
+          <%= tbd_event.id %>
+        </td>
+
+        <td>
+          <%= tbd_event.event_name %>
+        </td>
+
+        <td>
+          <%= tbd_event.event_desc %>
+        </td>
+
+        <td>
+          <%= tbd_event.window_begin %>
+        </td>
+
+        <td>
+          <%= tbd_event.window_end %>
+        </td>
+
+        <td>
+          <%= tbd_event.min_length %>
+        </td>
+
+        <td>
+          <%= tbd_event.start_time %>
+        </td>
+
+        <td>
+          <%= tbd_event.end_time %>
+        </td>
+
+        <td>
+          <%= tbd_event.start_date %>
+        </td>
+
+        <td>
+          <%= tbd_event.end_date %>
+        </td>
+
+        <td>
+          <%= tbd_event.location %>
+        </td>
+
+        <td>
+          <%= tbd_event.creator_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(tbd_event.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(tbd_event.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/tbd_events/<%= tbd_event.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

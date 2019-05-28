@@ -6,7 +6,11 @@
 
     <!-- Expand the number of characters we can use in the document beyond basic ASCII 🎉 -->
     <meta charset="utf-8">
-
+    
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="728617927217-8k1hmbh53mod3b86965kanvpovchqc9v.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    
     <!-- Connect Font Awesome CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.2/css/all.css">
 
@@ -26,8 +30,17 @@
   </head>
 
   <body>
+
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+
     <%= yield %>
 
     <%= dev_tools if Rails.env.development? %>
   </body>
+  
 </html>

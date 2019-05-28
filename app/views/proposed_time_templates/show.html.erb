@@ -1,0 +1,79 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Proposed time #<%= @proposed_time.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/proposed_times" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/proposed_times/<%= @proposed_time.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit proposed time
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_proposed_time/<%= @proposed_time.id %>" class="btn btn-block btn-outline-secondary">
+          Delete proposed time
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Start time
+      </dt>
+      <dd>
+        <%= @proposed_time.start_time %>
+      </dd>
+
+      <dt>
+        End time
+      </dt>
+      <dd>
+        <%= @proposed_time.end_time %>
+      </dd>
+
+      <dt>
+        Start date
+      </dt>
+      <dd>
+        <%= @proposed_time.start_date %>
+      </dd>
+
+      <dt>
+        End date
+      </dt>
+      <dd>
+        <%= @proposed_time.end_date %>
+      </dd>
+
+      <dt>
+        Meeting
+      </dt>
+      <dd>
+        <%= @proposed_time.meeting_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@proposed_time.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@proposed_time.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+

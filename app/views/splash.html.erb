@@ -1,0 +1,16 @@
+<body>
+    <h1>
+        Welcome to TBD!
+    </h1>
+    
+    <% if current_user == nil %>
+    
+        <form action="/users/sign_in">
+            <button>Log In</button>
+        </form>
+    <% else %>  
+        <form action="/dashboard">
+            <button>Go to my dashboard</button>
+        </form>
+    <p> </p>
+</body>

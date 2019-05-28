@@ -1,0 +1,66 @@
+<% if @proposed_time.errors.any? %>
+  <% @proposed_time.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit proposed time #<%= @proposed_time.id %>
+</h1>
+
+<hr>
+
+<form action="/update_proposed_time/<%= @proposed_time.id %>" method="post">
+
+  <div class="form-group">
+    <label for="start_time">
+      Start time
+    </label>
+
+    <input type="text" id="start_time" name="start_time" class="form-control" value="<%= @proposed_time.start_time %>">
+  </div>
+
+  <div class="form-group">
+    <label for="end_time">
+      End time
+    </label>
+
+    <input type="text" id="end_time" name="end_time" class="form-control" value="<%= @proposed_time.end_time %>">
+  </div>
+
+  <div class="form-group">
+    <label for="start_date">
+      Start date
+    </label>
+
+    <input type="text" id="start_date" name="start_date" class="form-control" value="<%= @proposed_time.start_date %>">
+  </div>
+
+  <div class="form-group">
+    <label for="end_date">
+      End date
+    </label>
+
+    <input type="text" id="end_date" name="end_date" class="form-control" value="<%= @proposed_time.end_date %>">
+  </div>
+
+  <div class="form-group">
+    <label for="meeting_id">
+      Meeting
+    </label>
+
+    <input type="text" id="meeting_id" name="meeting_id" class="form-control" value="<%= @proposed_time.meeting_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update proposed time
+  </button>
+</form>
+
+<hr>
+
+<a href="/proposed_times">
+  Go back
+</a>

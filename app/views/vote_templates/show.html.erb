@@ -1,0 +1,65 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Vote #<%= @vote.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/votes" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/votes/<%= @vote.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit vote
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_vote/<%= @vote.id %>" class="btn btn-block btn-outline-secondary">
+          Delete vote
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Proposed time
+      </dt>
+      <dd>
+        <%= @vote.proposed_time_id %>
+      </dd>
+
+      <dt>
+        Voter
+      </dt>
+      <dd>
+        <%= @vote.voter_id %>
+      </dd>
+
+      <dt>
+        Event
+      </dt>
+      <dd>
+        <%= @vote.event_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@vote.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@vote.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+

@@ -1,0 +1,14 @@
+# https://cloud.google.com/ruby/getting-started/authenticate-users
+
+default: &default
+  project_id: freetime-1556744506656
+  gcs_bucket: spring19_appdev_freetime_finalproject
+  oauth2:
+    client_id: 728617927217-8k1hmbh53mod3b86965kanvpovchqc9v.apps.googleusercontent.com
+    client_secret: fjipSifXk3Ou9AJPao41LoUC
+
+development:
+  <<: *default
+
+production:
+  <<: *default

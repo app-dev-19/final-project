@@ -1,0 +1,107 @@
+<h1>
+  Add a new tbd event
+</h1>
+
+
+<hr>
+
+<form action="/create_tbd_event" method="post">
+
+  <div class="form-group">
+    <label for="event_name">
+      Event name
+    </label>
+
+    <input type="text" id="event_name" name="event_name" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="event_desc">
+      Event desc
+    </label>
+
+    <input type="text" id="event_desc" name="event_desc" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="window_begin">
+      Window begin
+    </label>
+
+    <input type="text" id="window_begin" name="window_begin" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="window_end">
+      Window end
+    </label>
+
+    <input type="text" id="window_end" name="window_end" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="min_length">
+      Min length
+    </label>
+
+    <input type="text" id="min_length" name="min_length" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="start_time">
+      Start time
+    </label>
+
+    <input type="text" id="start_time" name="start_time" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="end_time">
+      End time
+    </label>
+
+    <input type="text" id="end_time" name="end_time" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="start_date">
+      Start date
+    </label>
+
+    <input type="text" id="start_date" name="start_date" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="end_date">
+      End date
+    </label>
+
+    <input type="text" id="end_date" name="end_date" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="location">
+      Location
+    </label>
+
+    <input type="text" id="location" name="location" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="creator_id">
+      Creator
+    </label>
+
+    <input type="text" id="creator_id" name="creator_id" class="form-control">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create tbd event
+  </button>
+</form>
+
+<hr>
+
+<a href="/tbd_events">
+  Go back
+</a>
