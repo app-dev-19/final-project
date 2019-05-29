@@ -20,6 +20,13 @@
 
 class TbdEvent < ApplicationRecord
     
+    def invitees
+        members = Membership.all.where({:event_id => self.id})
+        member_ids = members.pluck(:member_id)
+        invitees = User.all.where({:id => member_ids})
+        return invitees
+    end
+    
     belongs_to :creator, :class_name => "User"
     has_many :proposed_times, :foreign_key => "meeting_id", :dependent => :destroy
     has_many :memberships, :foreign_key => "event_id", :dependent => :destroy

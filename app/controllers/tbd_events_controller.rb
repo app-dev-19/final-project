@@ -28,7 +28,7 @@ class TbdEventsController < ApplicationController
     @first_memb.member_id = @event.creator_id
     @first_memb.save
     
-    redirect_to("/event/details/"+event_id.to_s)
+    redirect_to("/event/add_users/"+event_id.to_s)
   end
   
   def event_delete

@@ -3,7 +3,7 @@
 <p> </p>
 
 <h1>
-  <%= @event.event_name %> Event Details
+  Add invitees for <%= @event.event_name %> Event
 </h1>
 
 <dt>Description</dt>
@@ -19,17 +19,24 @@
 <dd><%=@event.location %></dd>
 
 <dt>Invitees</dt>
-<% if Membership.all.where({:event_id = @event.id}).nil? %>
+<% if Membership.all.where({:event_id => @event.id}).nil? %>
     <dd>No invitees. Don't forget to add yourself!</dd>
-<% elsif Membership.all.where({:event_id = @event.id}).count == 0 %>
+<% elsif Membership.all.where({:event_id => @event.id}).count == 0 %>
     <dd>No invitees. Don't forget to add yourself!</dd>
 <% else %>
-    <dd><% Membership.all.where({:event_id = @event.id}).to_sentence %></dd>
-    <% end %>
+    <dd><% @users.pluck(:gmail) %></dd>
 <% end %>
 
 
-<form action="/event/add_users/"+<%= @event.id %>>
+<form action="/event/save_invitees">
+  <input type="hidden" id="event_id" name="event_id" value="<%= @event.id %>">
+  <select id="user_dropdown" name="member_id" >
+    <% User.all.order({ :first_name => :asc }).each do |a_user| %>
+      <option value="<%= a_user.id %>">
+        <%= a_user.gmail %>
+      </option>
+    <% end %>
+  </select> 
   <button>
     Add Invitee
   </button>

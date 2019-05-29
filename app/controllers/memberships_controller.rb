@@ -1,5 +1,9 @@
 class MembershipsController < ApplicationController
   def add_membership
+      event_id = params.fetch("event_id")
+      @event = TbdEvent.all.where({:id => event_id}).first
+      @members = @event.memberships.pluck(:member_id)
+      @users = User.all.where({:id => @members})
       render("tbd_event_templates/add_membership.html.erb")
   end
   
