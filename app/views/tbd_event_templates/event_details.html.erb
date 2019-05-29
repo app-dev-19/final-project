@@ -1,0 +1,31 @@
+<%= render("/layouts/navbar.html.erb") %>
+
+<p> </p>
+
+<h1>
+  <%= @event.event_name %> Event Details
+</h1>
+
+<dt>Description</dt>
+<dd><%=@event.event_desc %></dd>
+
+<dt>Event Window</dt>
+<dd>From: <%=@event.window_begin %> To: <%=@event.window_end %></dd>
+
+<dt>Length</dt>
+<dd><%=@event.min_length %> Minutes</dd>
+
+<dt>Location</dt>
+<dd><%=@event.location %></dd>
+
+<form action="/event/details/"+<%= @event.id %>>
+      <button>
+    Update Event
+  </button>
+</form>
+
+<form action="/event/delete/"+<%= @event.id %>>
+      <button>
+    Delete
+  </button>
+</form>

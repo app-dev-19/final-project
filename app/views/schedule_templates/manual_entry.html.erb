@@ -1,7 +1,5 @@
 <%= render("/layouts/navbar.html.erb") %>
 <h1>Account Details</h1>
-<h2>Update profile</h2>
-<p> </p>
 
 <div>
     <h2> My Schedule </h2>
@@ -55,7 +53,7 @@
 
 <div>
     <h2> Add a new busy time </h2>
-    <form action="/add_new_schedule">
+    <form action="/schedule/save">
       <input type="hidden" name="owner_id" value="<%= current_user.id %>">
       <input type="hidden" name="event_cal" value="manual_entry">
       

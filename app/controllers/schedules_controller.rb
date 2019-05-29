@@ -22,6 +22,13 @@ class SchedulesController < ApplicationController
     
   end
   
+  def delete_manual_entry
+    sched_id = params.fetch("schedule_id")
+    s = Schedule.all.where({:id => sched_id}).first
+    s.destroy
+    redirect_to("/schedule/new")
+  end
+  
   def index
     @schedules = Schedule.all
 

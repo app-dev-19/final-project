@@ -27,7 +27,18 @@ Rails.application.routes.draw do
   
   # MANUAL ENTER FOR SCHEDULE
   match("/schedule/new", { :controller => "schedules", :action => "manual_entry", :via => "get"})
-  match("/add_new_schedule", { :controller => "schedules", :action => "save_manual_entry", :via => "get"})
+  match("/schedule/save", { :controller => "schedules", :action => "save_manual_entry", :via => "get"})
+  match("/schedule/delete/:schedule_id", { :controller => "schedules", :action => "delete_manual_entry", :via => "get"})
+  
+  # CREATE A TBD EVENT
+  match("/event/new", { :controller => "tbd_events", :action => "new_event", :via => "get"})
+  match("/event/save", { :controller => "tbd_events", :action => "save_event", :via => "get"})
+  match("/event/add_users/:event_id", { :controller => "memberships", :action => "add_membership", :via => "get"})
+  match("/event/edit/:event_id", { :controller => "tbd_events", :action => "edit_event", :via => "get"})
+  match("/event/details/:event_id", { :controller => "tbd_events", :action => "event_details", :via => "get"})
+  match("/event/delete/:event_id", { :controller => "tbd_events", :action => "delete_event", :via => "get"})
+  
+  
   
   #------------------------------
   

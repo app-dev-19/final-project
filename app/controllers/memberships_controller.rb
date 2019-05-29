@@ -1,4 +1,19 @@
 class MembershipsController < ApplicationController
+  def add_membership
+      render("tbd_event_templates/add_membership.html.erb")
+  end
+  
+  def save_membership
+      @new_memb = Membership.new
+      @new_memb.event_id = params.fetch("event_id")
+      @new_memb.member_id = params.fetch("member_id")
+      @new_memb.save
+      
+      event_id = @new_memb.event_id
+      @event = TbdEvent.all.where({:id => event_id}).first
+      redirect_to("/event/add_users/"+event_id.to_s)
+  end
+  
   def index
     @memberships = Membership.all
 

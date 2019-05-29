@@ -3,6 +3,41 @@ class TbdEventsController < ApplicationController
     render("tbd_event_templates/past_events.html.erb")
   end
   
+  def new_event
+    render("tbd_event_templates/new_event.html.erb")
+  end
+  
+  def event_details
+    event_id = params.fetch("event_id")
+    @event = TbdEvent.all.where({:id => event_id}).first
+    render("tbd_event_templates/event_details.html.erb")
+  end
+  
+  def save_event
+    @event = TbdEvent.new
+    @event.creator_id = params.fetch("creator_id")
+    @event.event_name = params.fetch("event_name")
+    @event.event_desc = params.fetch("event_desc")
+    @event.min_length = params.fetch("min_length")
+    @event.location = params.fetch("location")
+    @event.save
+    
+    event_id = @event.id
+    @first_memb = Membership.new
+    @first_memb.event_id = event_id
+    @first_memb.member_id = @event.creator_id
+    @first_memb.save
+    
+    redirect_to("/event/details/"+event_id.to_s)
+  end
+  
+  def event_delete
+    event_id = params.fetch("event_id")
+    @event = TbdEvent.all.where({:id => event_id}).first
+    @event.destroy
+    redirect_to("/dashboard")
+  end
+  
   def index
     @tbd_events = TbdEvent.all
 
