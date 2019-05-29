@@ -1,17 +1,39 @@
 <div>
-    <h2> Upcoming Obligations </h2>
     <table>
         <th>Event Name</th>
         <th>Start Date</th>
         <th>Start Time</th>
         <th>End Date</th>
         <th>End Time</th>
-        <!--insert ruby code-->
+        <th>See Details</th>
+        <% @events.each do |evnt| %>
             <tr>
                 <td>
-            
+                  <%= evnt.event_name %>
                 </td>
-            </tr>
-        <!--end-->
+            
+                <td>
+                  <%= evnt.start_date %>
+                </td>
+            
+                <td>
+                  <%= evnt.start_time %>
+                </td>
+            
+                <td>
+                  <%= evnt.end_date %>
+                </td>
+            
+                <td>
+                  <%= evnt.end_time %>
+                </td>
+            
+                <td>
+                  <a href="/events/<%= evnt.id %>">
+                    ***
+                  </a>
+                </td>
+              </tr>
+          <% end %>
     </table>
 </div>

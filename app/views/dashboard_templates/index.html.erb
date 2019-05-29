@@ -1,51 +1,73 @@
 <%= render("/layouts/navbar.html.erb") %>
 
-<body>
-        
-    <p> </p>
-    <% if user_signed_in? %>
-          <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+<p> </p>
+
+<p>
+    Note: if nothing is showing you may need to sign in with Google.
+</p>
+<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+<script>
+  function onSignIn(googleUser) {
+    // Useful data for your client-side scripts:
+    var profile = googleUser.getBasicProfile();
+    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+    console.log('Full Name: ' + profile.getName());
+    console.log('Given Name: ' + profile.getGivenName());
+    console.log('Family Name: ' + profile.getFamilyName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail());
+
+    // The ID token you need to pass to your backend:
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log("ID Token: " + id_token);
+  }
+</script>
+<p> </p>
+<h1>
+    Dashboard
+</h1>
+
+<div>
+    
+</div>
+
+<div>
+    <h2> My Plans </h2>
+    <% if current_user.memberships.nil? %>
+        <p>You may not be logged in. Make a profile now.</p>
+    <% elsif current_user.memberships.count == 0 %>
+        <p>You do not have any upcoming events. Make a new event now.</p>
     <% else %>
-          <%= link_to('Login', new_user_session_path) %>  
-    <% end %>
-
-    <p>
-        Note: if nothing is showing you may need to sign in with Google.
-    </p>
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-    <script>
-      function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-      }
-    </script>
-    <p> </p>
-    <h1>
-        Dashboard
-    </h1>
-
-    <div>
-        
-    </div>
-    <div>
-        <h2> My Plans </h2>
         <table>
             <th>Name</th>
             <th>Description</th>
             <th></th>
+            <tr>
+                <td>
+                  
+                </td>
+            
+                <td>
+                  
+                </td>
+            
+                <td>
+                  
+                </td>
+            </tr>
         </table>
-    </div>
+    <% end %>
     
-    <%= render("/layouts/event_table.html.erb") %>
-    
-</body>
+</div>
+
+<div>
+    <h2> My Schedule </h2>
+    <% if current_user.schedules.nil? %>
+        <p>You may not be logged in. Make a profile now.</p>
+    <% elsif current_user.schedules.count == 0 %>
+        <p>You do not have any upcoming obligations in your calendar</p>
+    <% else %>
+        <%= @events = current_user.schedules.all %>
+        <%= render("/layouts/event_table.html.erb") %>
+    <% end %>
+</div>

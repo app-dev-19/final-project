@@ -1,0 +1,80 @@
+<%= render("/layouts/navbar.html.erb") %>
+<h1>Account Details</h1>
+<h2>Update profile</h2>
+<p> </p>
+
+<div>
+    <h2> My Schedule </h2>
+    <% if current_user.schedules.nil? %>
+        <p>You may not be logged in. Make a profile now.</p>
+    <% elsif current_user.schedules.count == 0 %>
+        <p>You do not have any upcoming obligations in your calendar</p>
+    <% else %>
+        <div>
+            <table>
+                <th>Event Name</th>
+                <th>Start Date</th>
+                <th>Start Time</th>
+                <th>End Date</th>
+                <th>End Time</th>
+                <th>Delete</th>
+                <% current_user.schedules.each do |evnt| %>
+                    <tr>
+                        <td>
+                          <%= evnt.event_name %>
+                        </td>
+                    
+                        <td>
+                          <%= evnt.start_date %>
+                        </td>
+                    
+                        <td>
+                          <%= evnt.start_time %>
+                        </td>
+                    
+                        <td>
+                          <%= evnt.end_date %>
+                        </td>
+                    
+                        <td>
+                          <%= evnt.end_time %>
+                        </td>
+                    
+                        <td>
+                          <a href="/schedule/delete/<%= evnt.id %>">
+                            <i class="fas fa-trash"></i>
+                          </a>
+                        </td>
+                      </tr>
+                  <% end %>
+            </table>
+        </div>
+    <% end %>
+</div>
+
+
+<div>
+    <h2> Add a new busy time </h2>
+    <form action="/add_new_schedule">
+      <input type="hidden" name="owner_id" value="<%= current_user.id %>">
+      <input type="hidden" name="event_cal" value="manual_entry">
+      
+      <label for="event_name">Description</label>
+      <input id="event_name" type="text" name="event_name">
+        
+      <label for="start_time">Start Time</label>
+      <input id="start_time" type="time" name="start_time">
+      
+      <label for="start_date">Start Date</label>
+      <input id="start_date" type="date" name="start_date">
+      
+      <label for="end_time">End Time</label>
+      <input id="end_time" type="time" name="end_time">
+      
+      <label for="end_date">End Date</label>
+      <input id="end_date" type="date" name="end_date">
+    
+      <button>Add Busy Time</button>
+    </form>
+    
+</div>

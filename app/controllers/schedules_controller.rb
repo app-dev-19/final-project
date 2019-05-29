@@ -1,4 +1,27 @@
 class SchedulesController < ApplicationController
+  def manual_entry
+    render("schedule_templates/manual_entry.html.erb")
+  end
+  
+  def save_manual_entry
+    @schedule = Schedule.new
+    @schedule.owner_id = params.fetch("owner_id")
+    @schedule.event_name = params.fetch("event_name")
+    @schedule.event_cal = params.fetch("event_cal")
+    @schedule.start_time = params.fetch("start_time")
+    @schedule.end_time = params.fetch("end_time")
+    @schedule.start_date = params.fetch("start_date")
+    @schedule.end_date = params.fetch("end_date")
+    
+    if @schedule.valid?
+      @schedule.save
+      redirect_to("/schedule/new")
+    else
+      render("schedule_templates/new_form_with_errors.html.erb")
+    end
+    
+  end
+  
   def index
     @schedules = Schedule.all
 

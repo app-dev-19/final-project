@@ -5,11 +5,17 @@
     
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>                     <!--insert user id-->
+              <li class="nav-item"><a class="nav-link" href="/refresh_events"><i class="fas fa-sync"></i></a></li>
+              <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>                  
               <li class="nav-item"><a class="nav-link" href="/events/new">Create an Event</a></li>
-              <li class="nav-item"><a class="nav-link" href="/dashboard/past_events/">Past Events</a></li>      <!--insert user id-->
-              <li class="nav-item"><a class="nav-link" href="">Log into Google</a></li>
-              <li class="nav-item"><a class="nav-link" href="/users/sign_out">Logout</a></li>
+              <li class="nav-item"><a class="nav-link" href="/schedule/new">Enter Obligations</a></li>
+              <li class="nav-item"><a class="nav-link" href="/users/user_details">Account</a></li>             
+              <li class="nav-item">
+                  <% if user_signed_in? %>
+                      <a class = "nav-link" rel="nofollow" data-method="delete" href="/users/sign_out">Logout</a>       
+                  <% else %>
+                  <% end %>
+              </li>
             </ul>
           </div>
         </nav>

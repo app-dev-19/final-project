@@ -1,0 +1,33 @@
+<%= render("/layouts/navbar.html.erb") %>
+<h1>Account Details</h1>
+<h2>Update profile</h2>
+<p> </p>
+
+<form action="/update_account_details">
+  <label for="first_name">First Name</label>
+  <input id="first_name" type="text" name="first_name" value="<%= current_user.first_name %>">
+    
+  <label for="last_name">Last Name</label>
+  <input id="last_name" type="text" name="last_name" value="<%= current_user.last_name %>">
+
+  <label for="gmail">Google Email Address</label>
+  <input id="gmail" type="text" name="gmail" value="<%= current_user.gmail %>">
+
+  <button>Update profile</button>
+</form>
+
+<dt>
+    Name
+</dt>
+<dd>
+    <p><%= current_user.first_name %></p>
+    <p><%= current_user.last_name %></p>
+</dd>
+
+<% if current_user.meetings.nil? %>
+    <p>You do not have any past meetings</p>
+<% elsif current_user.meetings.count == 0 %>
+    <p>You do not have any past meetings</p>
+<% else %>
+    <%= render "/layouts/event_table.html.erb" %>
+<% end %>

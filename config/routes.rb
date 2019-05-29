@@ -19,10 +19,15 @@ Rails.application.routes.draw do
   
   # DASHBOARD
   match("/dashboard", { :controller => "dashboards", :action => "show_page", :via => "get"})
+  match("/users/user_details", { :controller => "users", :action => "account_details", :via => "get"})
+  match("/refresh_events", { :controller => "dashboards", :action => "refresh_from_gmail", :via => "get"})
   
-  # TBD_EVENTS
-  match("/tbd_events/past_events", { :controller => "tbd_events", :action => "past_events_page", :via => "get"})
+  # USERS
+  match("/update_account_details", { :controller => "users", :action => "update_account_details", :via => "get"})
   
+  # MANUAL ENTER FOR SCHEDULE
+  match("/schedule/new", { :controller => "schedules", :action => "manual_entry", :via => "get"})
+  match("/add_new_schedule", { :controller => "schedules", :action => "save_manual_entry", :via => "get"})
   
   #------------------------------
   
