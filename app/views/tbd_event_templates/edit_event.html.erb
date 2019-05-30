@@ -1,0 +1,79 @@
+<%= render("/layouts/navbar.html.erb") %>
+
+<p> </p>
+
+<h1>
+  Update <%= @event.event_name %> Event
+</h1>
+
+
+<hr>
+
+<form action="/event/save_update/<%= @event.id %>">
+
+  <div class="form-group">
+    <label for="event_name">
+      Event Name
+    </label>
+
+    <input type="text" id="event_name" name="event_name" class="form-control" value="<%=@event.event_name%>">
+  </div>
+
+  <div class="form-group">
+    <label for="event_desc">
+      Event Description
+    </label>
+
+    <input type="text" id="event_desc" name="event_desc" class="form-control" value="<%=@event.event_desc%>">
+  </div>
+
+  <div>
+    <p>What time of day would you like to meet?</p>
+    <dt>
+        <label for="window_begin">
+        From:
+      </label>
+    </dt>
+    <dd>
+      <input type="time" id="window_begin" name="window_begin" class="form-control" value="<%=@event.window_begin%>">
+    </dd>
+    <dt>
+        <label for="window_end">
+        To:
+      </label>
+    </dt>
+    <dd>
+      <input type="time" id="window_end" name="window_end" class="form-control" value="<%=@event.window_end%>">
+    </dd>
+  </div>
+
+  <div class="form-group">
+    <label for="min_length">
+      Length of Event (in minutes)
+    </label>
+
+    <input type="text" id="min_length" name="min_length" class="form-control" value="<%=@event.min_length%>">
+  </div>
+
+  <div class="form-group">
+    <label for="location">
+      Location
+    </label>
+
+    <input type="text" id="location" name="location" class="form-control" value="<%=@event.location%>">
+  </div>
+  
+  <div>
+    <input type="hidden" id="creator_id" name="creator_id" class="form-control" value="<%= current_user.id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update TBD Event
+  </button>
+</form>
+
+<hr>
+
+<a href="/event/details/<%= @event.id %>">
+  Cancel
+</a>

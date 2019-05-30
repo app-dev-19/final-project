@@ -34,8 +34,20 @@ class TbdEventsController < ApplicationController
   end
   
   def edit_event
-    event_id = param.fetch("event_id")
-    @event = Event.all.where({:id => event_id})
+    event_id = params.fetch("event_id")
+    @event = TbdEvent.all.where({:id => event_id}).first
+    render("/tbd_event_templates/edit_event.html.erb")
+  end
+  
+  def edit_event_errors
+    event_id = params.fetch("event_id")
+    @event = TbdEvent.all.where({:id => event_id}).first
+    render("/tbd_event_templates/edit_event_with_error.html.erb")
+  end
+  
+  def save_update
+    event_id = params.fetch("event_id")
+    @event = TbdEvent.all.where({:id => event_id}).first
     @event.creator_id = params.fetch("creator_id")
     @event.event_name = params.fetch("event_name")
     @event.event_desc = params.fetch("event_desc")
@@ -46,9 +58,9 @@ class TbdEventsController < ApplicationController
     
     if @event.valid?
       @event.save
-      redirect_to("/event/details"+event_id)
+      redirect_to("/event/details/"+event_id)
     else
-      redirect_to("/event/edit/"+event_id, :notice)
+      redirect_to("/event/edit_errors/"+event_id)
     end
   end
   

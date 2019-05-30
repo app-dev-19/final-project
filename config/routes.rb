@@ -33,9 +33,11 @@ Rails.application.routes.draw do
   # CREATE A TBD EVENT
   match("/event/new", { :controller => "tbd_events", :action => "new_event", :via => "get"})
   match("/event/save", { :controller => "tbd_events", :action => "save_event", :via => "get"})
+  match("/event/save_update/:event_id", { :controller => "tbd_events", :action => "save_update", :via => "get"})
   match("/event/add_users/:event_id", { :controller => "memberships", :action => "add_membership", :via => "get"})
   match("/event/save_invitees", { :controller => "memberships", :action => "save_membership", :via => "get"})
   match("/event/edit/:event_id", { :controller => "tbd_events", :action => "edit_event", :via => "get"})
+  match("/event/edit_errors/:event_id", { :controller => "tbd_events", :action => "edit_event_errors", :via => "get"})
   match("/event/details/:event_id", { :controller => "tbd_events", :action => "event_details", :via => "get"})
   match("/event/delete/:event_id", { :controller => "tbd_events", :action => "event_delete", :via => "get"})
   
