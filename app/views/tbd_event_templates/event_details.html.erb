@@ -18,13 +18,13 @@
 <dt>Location</dt>
 <dd><%=@event.location %></dd>
 
-<form action="/event/details/"+<%= @event.id %>>
+<form action="/event/edit/<%= @event.id %>">
       <button>
     Update Event
   </button>
 </form>
 
-<form action="/event/delete/"+<%= @event.id %>>
+<form action="/event/delete/<%= @event.id %>">
       <button>
     Delete
   </button>

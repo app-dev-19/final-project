@@ -18,13 +18,13 @@
 <dt>Location</dt>
 <dd><%=@event.location %></dd>
 
-<dt>Invitees</dt>
-<% if Membership.all.where({:event_id => @event.id}).nil? %>
+<dt>Invitees (<%= @users.count %>)</dt>
+<% if Membership.all.where({:event_id => @event_id}).nil? %>
     <dd>No invitees. Don't forget to add yourself!</dd>
-<% elsif Membership.all.where({:event_id => @event.id}).count == 0 %>
+<% elsif Membership.all.where({:event_id => @event_id}).count == 0 %>
     <dd>No invitees. Don't forget to add yourself!</dd>
-<% else %>
-    <dd><% @users.pluck(:gmail) %></dd>
+<% elsif Membership.all.where({:event_id => @event_id}).count != 0 %>
+    <dd> <%= @users.pluck(:gmail).to_sentence %> </dd>
 <% end %>
 
 
@@ -42,7 +42,7 @@
   </button>
 </form>
 
-<form action="/event/details/"+<%= @event.id %>>
+<form action="/event/details/<%= @event_id %>">
   <button>
     Finish
   </button>

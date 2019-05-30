@@ -11,6 +11,11 @@
 
 class Membership < ApplicationRecord
     
+    def all_events
+        events = TbdEvent.all.where({:id => self.event_id})
+        return(events)
+    end
+    
     belongs_to :member, :class_name => "User"
     belongs_to :event, :class_name => "TbdEvent"
     

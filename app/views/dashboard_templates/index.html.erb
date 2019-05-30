@@ -42,19 +42,20 @@
             <th>Name</th>
             <th>Description</th>
             <th></th>
-            <tr>
-                <td>
-                  
-                </td>
-            
-                <td>
-                  
-                </td>
-            
-                <td>
-                  
-                </td>
-            </tr>
+            <% current_user.memberships.each do |memb| %>
+            <% evt = memb.event %>
+                <tr>
+                    <td>
+                      <%= evt.event_name %>
+                    </td>
+                    <td>
+                      <%= evt.event_desc %>
+                    </td>
+                    <td>
+                      <a href="/event/details/<%=evt.id%>"><i class="fas fa-search"></i></a>
+                    </td>
+                </tr>
+            <% end %>
         </table>
     <% end %>
     

@@ -18,6 +18,8 @@ class TbdEventsController < ApplicationController
     @event.creator_id = params.fetch("creator_id")
     @event.event_name = params.fetch("event_name")
     @event.event_desc = params.fetch("event_desc")
+    @event.window_begin = params.fetch("window_begin")
+    @event.window_end = params.fetch("window_end")
     @event.min_length = params.fetch("min_length")
     @event.location = params.fetch("location")
     @event.save
@@ -29,6 +31,35 @@ class TbdEventsController < ApplicationController
     @first_memb.save
     
     redirect_to("/event/add_users/"+event_id.to_s)
+  end
+  
+  def edit_event
+    event_id = param.fetch("event_id")
+    @event = Event.all.where({:id => event_id})
+    @event.creator_id = params.fetch("creator_id")
+    @event.event_name = params.fetch("event_name")
+    @event.event_desc = params.fetch("event_desc")
+    @event.window_begin = params.fetch("window_begin")
+    @event.window_end = params.fetch("window_end")
+    @event.min_length = params.fetch("min_length")
+    @event.location = params.fetch("location")
+    
+    if @event.valid?
+      @event.save
+      redirect_to("/event/details"+event_id)
+    else
+      redirect_to("/event/edit/"+event_id, :notice)
+    end
+  end
+  
+  def update_row
+    
+    if @pic.valid?
+      @pic.save
+      redirect_to("/photos/" + photo_id)
+    else
+      redirect_to("/new_photo_form")
+    end
   end
   
   def event_delete

@@ -1,9 +1,10 @@
 class MembershipsController < ApplicationController
   def add_membership
-      event_id = params.fetch("event_id")
-      @event = TbdEvent.all.where({:id => event_id}).first
-      @members = @event.memberships.pluck(:member_id)
-      @users = User.all.where({:id => @members})
+      @event_id = params.fetch("event_id")
+      @event = TbdEvent.all.where({:id => @event_id}).first
+      #@members = @event.memberships.pluck(:member_id)
+      @users = @event.invitees
+      #@users = User.all.where({:id => @members})
       render("tbd_event_templates/add_membership.html.erb")
   end
   
@@ -13,9 +14,12 @@ class MembershipsController < ApplicationController
       @new_memb.member_id = params.fetch("member_id")
       @new_memb.save
       
-      event_id = @new_memb.event_id
-      @event = TbdEvent.all.where({:id => event_id}).first
-      redirect_to("/event/add_users/"+event_id.to_s)
+      @event_id = @new_memb.event_id
+      @event = TbdEvent.all.where({:id => @event_id}).first
+      #@members = @event.memberships.pluck(:member_id)
+      @users = @event.invitees
+      #@users = User.all.where({:id => @members})
+      redirect_to("/event/add_users/"+@event_id.to_s)
   end
   
   def index
