@@ -1,0 +1,19 @@
+<%= render("/layouts/navbar.html.erb") %>
+
+<p> </p>
+
+<h1>Free Times for All Attendees</h1>
+
+<div>
+    <p>Placeholder for Free Times</p>
+</div>
+
+<form action="/event/proposed_times/save/<%= @event.id %>">
+      <button>
+    Update Event
+  </button>
+</form>
+
+<a href="/event/details/<%= @event.id %>">
+  Cancel
+</a>

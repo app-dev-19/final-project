@@ -20,7 +20,7 @@
 
 <dt>Invitees (<%= @users.count %>)</dt>
 <% if Membership.all.where({:event_id => @event_id}).nil? %>
-    <dd>No invitees. Don't forget to add yourself!</dd>
+    <dd>Woah! Something went wrong...</dd>
 <% elsif Membership.all.where({:event_id => @event_id}).count == 0 %>
     <dd>No invitees. Don't forget to add yourself!</dd>
 <% elsif Membership.all.where({:event_id => @event_id}).count != 0 %>

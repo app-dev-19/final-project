@@ -1,4 +1,11 @@
 class VotesController < ApplicationController
+  
+  def initialize_vote
+    @event_id = params.fetch("event_id")
+    @event = TbdEvent.all.where({:id => @event_id}).first
+    render("vote_templates/make_votes.html.erb")
+  end
+  
   def index
     @votes = Vote.all
 

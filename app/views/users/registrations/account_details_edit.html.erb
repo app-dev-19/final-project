@@ -29,5 +29,6 @@
 <% elsif current_user.meetings.count == 0 %>
     <p>You do not have any past meetings</p>
 <% else %>
+    <h2>Past Meetings</h2>
     <%= render "/layouts/event_table.html.erb" %>
 <% end %>

@@ -1,4 +1,9 @@
 class ProposedTimesController < ApplicationController
+  def save_times
+    @event_id = params.fetch("event_id")
+    redirect_to("/event/vote/"+@event_id)
+  end
+  
   def index
     @proposed_times = ProposedTime.all
 

@@ -35,7 +35,7 @@
       </label>
     </dt>
     <dd>
-      <input type="time" id="window_begin" name="window_begin" class="form-control" value="<%=@event.window_begin%>">
+      <input type="time" id="window_begin" name="window_begin" class="form-control" value=<%=@event.window_begin%>>
     </dd>
     <dt>
         <label for="window_end">
@@ -43,7 +43,7 @@
       </label>
     </dt>
     <dd>
-      <input type="time" id="window_end" name="window_end" class="form-control" value="<%=@event.window_end%>">
+      <input type="time" id="window_end" name="window_end" class="form-control" value=<%=@event.window_end%>>
     </dd>
   </div>
 
@@ -72,7 +72,11 @@
   </button>
 </form>
 
-<hr>
+<form action="/event/add_users/<%= @event.id %>">
+      <button>
+    Add Invitees
+  </button>
+</form>
 
 <a href="/event/details/<%= @event.id %>">
   Cancel

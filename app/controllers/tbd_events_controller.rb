@@ -8,8 +8,9 @@ class TbdEventsController < ApplicationController
   end
   
   def event_details
-    event_id = params.fetch("event_id")
-    @event = TbdEvent.all.where({:id => event_id}).first
+    @event_id = params.fetch("event_id")
+    @event = TbdEvent.all.where({:id => @event_id}).first
+    @users = @event.invitees
     render("tbd_event_templates/event_details.html.erb")
   end
   
@@ -63,6 +64,20 @@ class TbdEventsController < ApplicationController
       redirect_to("/event/edit_errors/"+event_id)
     end
   end
+  
+  def calculate_time
+    @event_id = params.fetch("event_id")
+    @event = TbdEvent.all.where({:id => @event_id}).first
+    @invitees = @event.invitees
+    render("/proposed_time_templates/proposed_times.html.erb")
+  end
+  
+  
+  
+  
+  # ------------------------------------------------------------------
+  # Added by rails
+  # ------------------------------------------------------------------
   
   def update_row
     

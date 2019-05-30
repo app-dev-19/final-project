@@ -34,12 +34,26 @@ Rails.application.routes.draw do
   match("/event/new", { :controller => "tbd_events", :action => "new_event", :via => "get"})
   match("/event/save", { :controller => "tbd_events", :action => "save_event", :via => "get"})
   match("/event/save_update/:event_id", { :controller => "tbd_events", :action => "save_update", :via => "get"})
+  
   match("/event/add_users/:event_id", { :controller => "memberships", :action => "add_membership", :via => "get"})
   match("/event/save_invitees", { :controller => "memberships", :action => "save_membership", :via => "get"})
+  
   match("/event/edit/:event_id", { :controller => "tbd_events", :action => "edit_event", :via => "get"})
   match("/event/edit_errors/:event_id", { :controller => "tbd_events", :action => "edit_event_errors", :via => "get"})
+  
   match("/event/details/:event_id", { :controller => "tbd_events", :action => "event_details", :via => "get"})
+  
   match("/event/delete/:event_id", { :controller => "tbd_events", :action => "event_delete", :via => "get"})
+  
+  # TIME SEARCH
+  match("/event/calculate_time/:event_id", { :controller => "tbd_events", :action => "calculate_time", :via => "get"})
+  match("/event/calculate_time/:event_id", { :controller => "proposed_times", :action => "save_times", :via => "get"})
+  match("/event/vote/:event_id", { :controller => "votes", :action => "initialize_vote", :via => "get"})
+  #match("/event/vote_save/:event_id", { :controller => "votes", :action => "save_vote", :via => "get"})
+  #match("/event/vote_delete/:event_id", { :controller => "votes", :action => "delete_vote", :via => "get"})
+  #match("/event/vote_edit/:event_id", { :controller => "votes", :action => "edit_vote", :via => "get"})
+  #match("/event/vote_update/:event_id", { :controller => "votes", :action => "update_vote", :via => "get"})
+  #match("/event/publish/:event_id", { :controller => "tbd_events", :action => "publish", :via => "get"})
   
   
   

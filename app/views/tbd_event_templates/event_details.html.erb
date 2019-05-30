@@ -6,6 +6,8 @@
   <%= @event.event_name %> Event Details
 </h1>
 
+<%= render("/layouts/details_navbar.html.erb") %>
+
 <dt>Description</dt>
 <dd><%=@event.event_desc %></dd>
 
@@ -17,6 +19,17 @@
 
 <dt>Location</dt>
 <dd><%=@event.location %></dd>
+
+<dt>Invitees (<%= @users.count %>)</dt>
+<% if Membership.all.where({:event_id => @event_id}).nil? %>
+    <dd>No invitees. Don't forget to add yourself!</dd>
+<% elsif Membership.all.where({:event_id => @event_id}).count == 0 %>
+    <dd>No invitees. Don't forget to add yourself!</dd>
+<% elsif Membership.all.where({:event_id => @event_id}).count != 0 %>
+    <dd> <%= @users.pluck(:gmail).to_sentence %> </dd>
+<% end %>
+<dd><a href="/event/add_users/<%= @event.id %>">Add Invitees</a></dd>
+<p> </p>
 
 <form action="/event/edit/<%= @event.id %>">
       <button>
